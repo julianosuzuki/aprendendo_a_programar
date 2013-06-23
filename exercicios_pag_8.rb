@@ -17,13 +17,14 @@ def numeroPortugues numero
 
   #  "falta" é quanto do número ainda falta escrever.
   #  "escrevendo" é a parte que estamos escrevendo agora.
+
   falta  = numero
   escrevendo = falta/1000           #  Quantas centenas ainda faltam escrever?
   falta  = falta - escrevendo*1000  #  Subtraia essas centenas.
 
   if escrevendo > 0
-    if ((escrevendo == 1) and (falta > 0))
-      numExtenso = numExtenso + unidades[escrevendo-1] + " mil"
+    if ((escrevendo == 1) and (falta > 0)) or (escrevendo < 10)
+      numExtenso = numExtenso  + unidades[escrevendo-1] + " mil"
     elsif
       numExtenso = numExtenso + dezenas[escrevendo-1] + " mil"
     elsif
@@ -99,10 +100,11 @@ puts numeroPortugues( 32)
 puts numeroPortugues( 88)
 puts numeroPortugues( 99)
 puts numeroPortugues(199)
-puts numeroPortugues(420)
+puts numeroPortugues(999)
 puts numeroPortugues(234)
-puts numeroPortugues(1000)
-puts numeroPortugues(3000)
+puts numeroPortugues(1015)
+puts numeroPortugues(3234)
 puts numeroPortugues(3211)
+puts numeroPortugues(9999)
 puts numeroPortugues(999999)
 puts numeroPortugues(100000000000)
