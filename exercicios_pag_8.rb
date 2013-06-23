@@ -18,6 +18,26 @@ def numeroPortugues numero
   #  "falta" é quanto do número ainda falta escrever.
   #  "escrevendo" é a parte que estamos escrevendo agora.
   falta  = numero
+  escrevendo = falta/1000           #  Quantas centenas ainda faltam escrever?
+  falta  = falta - escrevendo*1000  #  Subtraia essas centenas.
+
+  if escrevendo > 0
+    if ((escrevendo == 1) and (falta > 0))
+      numExtenso = numExtenso + unidades[escrevendo-1] + " mil"
+    elsif
+      numExtenso = numExtenso + dezenas[escrevendo-1] + " mil"
+    elsif
+      numExtenso = numExtenso + centenas[escrevendo-1] + " mil"
+    else
+      numExtenso = numExtenso + especiais[escrevendo-1] + " mil"
+    end
+
+    if falta > 0
+      #  Nós não escrevemos dois centosecinqüenta e um"...
+      numExtenso = numExtenso + " e "
+    end
+  end
+
   escrevendo = falta/100           #  Quantas centenas ainda faltam escrever?
   falta  = falta - escrevendo*100  #  Subtraia essas centenas.
 
